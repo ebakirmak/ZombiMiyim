@@ -1,0 +1,122 @@
+﻿<link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="css/font-awesome.min.css" rel="stylesheet">
+<link href="css/prettyPhoto.css" rel="stylesheet">
+<link href="css/main.css" rel="stylesheet">
+<section id="contact">
+    <div class="container">
+        <div class="box last">
+            <div class="row">
+                <div class="col-sm-6">
+                    <h1>İletişim Formu</h1>
+                    <p>Projemiz ile ilgili her türlü soru, görüş ve fikirlerinizi bizimle paylaşablirsiniz.</p>
+                    <div class="status alert alert-success" style="display: none"></div>
+                    <form id="main-contact-form" class="contact-form" name="contact-form" method="post" action="sendemail.php" role="form">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" required="required" placeholder="İsim" id="Cname">
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" required="required" placeholder="Mail Adresi" id="Cmail">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="form-group">
+                                    <textarea name="Cmessage" id="Cmessage" required="required" class="form-control" rows="8" placeholder="Mesajınız"></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <button type="button" class="btn btn-danger btn-lg" onclick="SendMessage()">Gönder</button>
+                                    <!--Bootstrap ContactModal-->
+                                    <div class="modal fade" id="contactModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                    <h4 class="modal-title" id="contactModalLabel">New message</h4>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <h4 id="contactMessage"></h4>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div><!--ContactModal Bitti...-->
+
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div><!--/.col-sm-6-->
+                <div class="col-sm-6">
+                    <h1>Adresimiz</h1>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <address>
+                                <strong>Hasan Ferdi Turgutlu Teknoloji Fakültesi</strong><br>
+                                Acarler Mahallesi Ankara asfaltı üzeri (Eski Garaj)<br>
+                                Turgutlu / Manisa<br>
+                                <abbr title="Phone">P:</abbr> (123) 456-7890
+                            </address>
+                        </div>
+
+                    </div>
+                    <h1>Bizi Takip Edin</h1>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <ul class="social">
+                                <li><a href="#"><i class="icon-facebook icon-social"></i> Facebook</a></li>
+                                <li><a href="#"><i class="icon-google-plus icon-social"></i> Google Plus</a></li>
+                                <li><a href="#"><i class="icon-pinterest icon-social"></i> Pinterest</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <ul class="social">
+                                <li><a href="#"><i class="icon-linkedin icon-social"></i> Linkedin</a></li>
+                                <li><a href="#"><i class="icon-twitter icon-social"></i> Twitter</a></li>
+                                <li><a href="#"><i class="icon-youtube icon-social"></i> Youtube</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div><!--/.col-sm-6-->
+            </div><!--/.row-->
+        </div><!--/.box-->
+    </div><!--/.container-->
+</section><!--/#contact-->
+
+
+
+<script>
+
+
+
+    function SendMessage()
+    {
+        var data = {
+            Name: $("#Cname").val(),
+            Email: document.getElementById("Cmail").value,
+            Content: $("#Cmessage").val(),
+        };
+
+        $.post("/Contact/SendMessage", data, function (backdata) {
+
+            $('#contactModal').on('show.bs.modal', function () {
+
+                $('#contactMessage').text(backdata);
+            });
+            $('#contactModal').modal('show');
+
+
+            $(":input").val('');
+        });
+    }
+
+
+
+</script>

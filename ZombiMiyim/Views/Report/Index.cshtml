@@ -1,0 +1,220 @@
+﻿<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Zombilik Raporu</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <link href="css/prettyPhoto.css" rel="stylesheet">
+    <link href="css/main.css" rel="stylesheet">
+
+
+</head>
+
+<body data-spy="scroll" data-target="#navbar" data-offset="0">
+
+    <div class="modal fade" id="modal" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 id="modalHeader" class="modal-title"></h4>
+                </div>
+                <div id="modalBody" class="modal-body">            </div>
+                <div class="modal-footer">
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <header id="header" role="banner">
+
+        <div class="container">
+            <div id="navbar" class="navbar navbar-default">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+
+                </div>
+                <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="#main-slider"onclick="window.location.replace('Home');"><i class="icon-home"></i></a></li>
+                        <li><a href="#paketSiklik">Paket Sıklıkları</a></li>
+                        <li><a href="#atakTur">Atak Türleri</a></li>
+                        <li><a href="#raporVeri">Rapor Verileri</a></li>
+                        <li><a href="#durumum">Durumunuz</a></li>
+                        @if (ViewBag.Logined == null)
+                        {
+                            <li>
+                            <script> window.location.replace('Home'); </script> </li>
+                            <li><a href="#" onclick="$('#loginModal').modal('show');">Giriş</a></li>
+                        }
+                        else
+                        {   
+                            <li><a href="#" onclick="LogOut(); ">Çıkış</a></li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div>
+            @Html.Partial("~/Views/Shared/_User.cshtml");
+        </div>
+    </header><!--/#header-->
+
+
+    <br /><br />
+    <section id="">
+        <div class="container">
+            <div class="box">
+                <br />
+                <div style="width:80%;text-align:center;"><br /><br />
+
+                    <h3 id="paketSiklik">PAKET SIKLIĞI</h3>
+                    <canvas id="canvas" style="max-height:500px;max-width:100%;"></canvas>
+                    <br />
+                    <h1 id="atakTur">Atak Türleri</h1>
+                    <canvas id="canvas2" height="450" width="450" style="min-height:500px;min-width:80%;"></canvas>
+                    <br />
+                    <h1 id="raporVeri">Rapor Verleri</h1>
+                    <table class="table table-bordered">
+                        <thead >
+                            <tr>
+                                <th>ID</th>
+                                <th>IP</th>
+                                <th>Boyut</th>
+                                <th>Frekans</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>0</td>
+                                <td>12.134.23.4</td>
+                                <td>12</td>
+                                <td>57</td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>8.124.23.9</td>
+                                <td>43</td>
+                                <td>23</td>
+                            </tr>
+                            <tr class="danger">
+                                <td>3</td>
+                                <td>123.45.83.2</td>
+                                <td>5</td>
+                                <td>87</td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+
+                    <br />
+                    <br />
+                    <img src="~/images/zombie.png" />
+                    <h1 id="durumum">Zombisiniz</h1>
+
+
+                    <script>
+                        var randomScalingFactor = function () { return Math.round(Math.random() * 100) };
+                        var lineChartData = {
+                            labels: ["13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00"],
+                            datasets: [
+                                {
+                                    label: "My First dataset",
+                                    fillColor: "rgba(220,220,220,0.2)",
+                                    strokeColor: "rgba(220,220,220,1)",
+                                    pointColor: "rgba(220,220,220,1)",
+                                    pointStrokeColor: "#fff",
+                                    pointHighlightFill: "#fff",
+                                    pointHighlightStroke: "rgba(220,220,220,1)",
+                                    data: [randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor()]
+                                },
+                                {
+                                    label: "My Second dataset",
+                                    fillColor: "rgba(151,187,205,0.2)",
+                                    strokeColor: "rgba(151,187,205,1)",
+                                    pointColor: "rgba(151,187,205,1)",
+                                    pointStrokeColor: "#fff",
+                                    pointHighlightFill: "#fff",
+                                    pointHighlightStroke: "rgba(151,187,205,1)",
+                                    data: [randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor()]
+                                }
+                            ]
+
+                        }
+
+
+
+                        var radarChartData = {
+                            labels: ["SynFlood", "UdpFlood", "TcpXmas", "TcpNull"],
+                            datasets: [
+                                {
+                                    label: "My First dataset",
+                                    fillColor: "rgba(220,220,220,0.2)",
+                                    strokeColor: "rgba(220,220,220,1)",
+                                    pointColor: "rgba(220,220,220,1)",
+                                    pointStrokeColor: "#fff",
+                                    pointHighlightFill: "#fff",
+                                    pointHighlightStroke: "rgba(220,220,220,1)",
+                                    data: [20, 37, 11, 32]
+                                }
+                            ]
+                        };
+
+                        window.onload = function () {
+
+
+                            var ctx = document.getElementById("canvas").getContext("2d");
+                            window.myLine = new Chart(ctx).Line(lineChartData, {
+                                responsive: true
+                            });
+
+
+
+                            window.myRadar = new Chart(document.getElementById("canvas2").getContext("2d")).Radar(radarChartData, {
+                                responsive: true,
+                                pointLabelFontSize: 20,
+
+                            });
+                        }
+
+
+                    </script>
+                </div>
+            </div><!--/.box-->
+        </div><!--/.container-->
+    </section><!--/#portfolio-->
+    
+
+    <footer id="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6">
+                    &copy; 2015 <a target="_blank" href="http://zombimiyim.tohumyazilim.com/">Zombi Miyim?</a>. Tüm Hakları Saklıdır.
+                </div>
+
+            </div>
+        </div>
+    </footer><!--/#footer-->
+
+
+
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.isotope.min.js"></script>
+    <script src="js/jquery.prettyPhoto.js"></script>
+    <script src="~/js/Chart.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="~/js/Script.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,384 @@
+﻿<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Zombi Miyim?</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <link href="css/prettyPhoto.css" rel="stylesheet">
+    <link href="css/main.css" rel="stylesheet">
+
+
+</head>
+
+<body data-spy="scroll" data-target="#navbar" data-offset="0">
+
+    <div class="modal fade" id="modal" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 id="modalHeader" class="modal-title"></h4>
+                </div>
+                <div id="modalBody" class="modal-body">            </div>
+                <div class="modal-footer">
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <header id="header" role="banner">
+
+        <div class="container">
+            <div id="navbar" class="navbar navbar-default">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+
+                </div>
+                <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="#main-slider"><i class="icon-home"></i></a></li>
+                        <li><a href="#whatsZombie">Zombi Nedir?</a></li>
+                        <li><a href="#whatsDDOS">DDOS Nedir?</a></li>
+                        <li><a href="#isMeZombie">Zombi Miyim?</a></li>
+                        <li><a href="#about-us">Hakkımızda</a></li>
+                        <li><a href="#contact">İletişim</a></li>
+                        @if (ViewBag.Logined == null)
+                        {
+                            <li><a href="#" onclick="$('#loginModal').modal('toggle'); $('#loginModal a:first').tab('show');">Giriş</a></li>
+                        }
+                        else
+                        {
+                            <li><a href="#" onclick="window.location.replace('report');">Raporlar</a></li>
+                            <li><a href="#" onclick="LogOut();">Çıkış</a></li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div>
+            @Html.Partial("~/Views/Shared/_User.cshtml");
+        </div>
+    </header><!--/#header-->
+
+    <section id="main-slider" class="carousel">
+        <div class="carousel-inner">
+            <div class="item active">
+                <div class="container">
+                    <div class="carousel-content">
+                        <h1>Zombi Miyim?</h1>
+                        <p class="lead">DDOS saldırılarına bilinçsiz olarak katılan bilgisayarlara <strong>ZOMBİ BİLGİSAYAR</strong> denir.<br /><a href="#isMeZombie" style="font-size:40px;">Peki ya siz zombi misiniz?</a></p>
+                    </div>
+                </div>
+            </div><!--/.item-->
+            <div class="item">
+                <div class="container">
+                    <div class="carousel-content">
+                        <h1>DDOS Nedir?</h1>
+                        <p class="lead">Distributed Denial of Service (Dağıtık Hizmet Engelleme)  çok sayıda kaynaktan tek hedefe yapılan saldırıdır.<br><a style="font-size:40px;" href="#whatsDDOS">Ayrıntılar için içeri gelin.</a></p>
+                    </div>
+                </div>
+            </div><!--/.item-->
+        </div><!--/.carousel-inner-->
+        <a class="prev" href="#main-slider" data-slide="prev"><i class="icon-angle-left"></i></a>
+        <a class="next" href="#main-slider" data-slide="next"><i class="icon-angle-right"></i></a>
+    </section><!--/#main-slider-->
+
+    <section id="whatsZombie">
+        <div class="container">
+            <div class="box first">
+                <div class="row" style="text-align:center;">
+                    <br />
+                    <br />
+                    <br />
+                    <h1 style="font-size:48px;">Zombi Nedir?</h1>
+
+                    <div class="col-md-8 " style="font-size:20px">
+
+                        <p align="justify">
+                               DDOS saldırılarında bilinçsiz bir şekilde saldırının bir parçası olarak hedef sisteme sürekli istek gönderen bilgisayarlara zombi bilgisayar denir.
+                            Saldırgan daha önceden zombi bilgisayara yerleştirdiği küçük bir yazılım ile bilgisayarın istediğinde saldırıya katılabilmesi için hazır durumda olmasını sağlar. Böylece saldırgan
+                            istediği anda yüzlerce bilgisayarın hedef sisteme istek göndermesini sağlayarak sistemin kaldıracağından daha fazla yüke maruz kalmasını sağlar.
+                            Böylelikle de sistem geçici bir süreliğine devre dışı kalır.
+                        </p>
+
+                    </div>
+                    <div class="col-md-4"><img height="150" width="150" src="~/images/zombie.png" /></div>
+                </div><!--/.row-->
+            </div><!--/.box-->
+        </div><!--/.container-->
+    </section><!--/#services-->
+
+    <section id="whatsDDOS">
+        <div class="container">
+            <div class="box">
+                <div class="col-md-4">
+                    <i class="glyphicon glyphicon-question-sign" style="font-size:100px;"></i>
+                </div>
+                <div class="center gap ">
+                    <h2 style="margin-left:-300px;">DDOS Nedir</h2>
+                    
+                    <p class="lead" align="justify">
+                        <ul class="lead" style="text-align:left;">
+                   
+                    <li> D-DOS bilgi güvenliği unsurlarından erişebilirliği hedef almaktadır.</li>
+                    <br />
+                    <li> İlk zamanlar saldırganın bilgisayarından yapılan saldırılar, sonraları zombi durumuna getirilen milyonlarca bilgisayardan aynı anda yapılan saldırı şekline dönüşmüştür.</li>
+                    <br />
+                    <li> D-DOS; kullanıcı bilgisayarlarına çeşitli yollarla  (Cracklenmiş dosyaların içine gömülerek, sosyal mühendislik, mail bombası…) bulaştırılan dosyalar ile (virüs, trojan),  zombi durumundaki bilgisayarın internet trafiğini bir web sitesine yönlendirilmesiyle gerçekleşen saldırılardır.</li>
+                    <br />
+                    <li> D-DOS saatli bomba mantığıyla çalışmaktadır. Saldırganın belirlediği zaman aralığında hedef web sitesine yani sunuculara paketler gönderir.</li>
+                    <br />
+                    <li> Sistemler kurulurken, siteyi giriş yapacak kullanıcı sayısı, anlık istek sayısı gibi unsurlar için belirli değerler öngörülür ve ona göre tasarlanır. D-DOS saldırılarında ise sistemin kaldırabileceğinin çok üstünde istek gönderilerek, sistem cevap veremez hale getirilebilir.</li>
+                    </ul>
+                    </p>
+                </div><!--/.center-->
+                <ul class="portfolio-filter">
+                    <li><a class="btn btn-primary active" href="#" data-filter="*">DDOS</a></li>
+                    <li><a class="btn btn-primary" href="#" data-filter=".zombi">Zombi</a></li>
+                    <li><a class="btn btn-primary" href="#" data-filter=".hack">Hack</a></li>
+                    <li><a class="btn btn-primary" href="#" data-filter=".guvenlik">Güvenlik</a></li>
+                </ul><!--/#portfolio-filter-->
+                <ul class="portfolio-items col-4">
+                    <li class="portfolio-item DDOS">
+                        <div class="item-inner">
+                            <div class="portfolio-image">
+                                <img src="images/1.png" alt="">
+                                <div class="overlay">
+                                    <a class="preview btn btn-danger" href="images/1.png"><i class="icon-eye-open"></i></a>
+                                </div>
+                            </div>
+                            <h5></h5>
+                        </div>
+                    </li><!--/.portfolio-item-->
+                    <li class="portfolio-item  zombi">
+                        <div class="item-inner">
+                            <div class="portfolio-image">
+                                <img src="images/2.png" alt="">
+                                <div class="overlay">
+                                    <a class="preview btn btn-danger" href="images/2.png"><i class="icon-eye-open"></i></a>
+                                </div>
+                            </div>
+                            <h5></h5>
+                        </div>
+                    </li><!--/.portfolio-item-->
+                    <li class="portfolio-item zombi ">
+                        <div class="item-inner">
+                            <div class="portfolio-image">
+                                <img src="images/3.png" alt="">
+                                <div class="overlay">
+                                    <a class="preview btn btn-danger" href="images/3.png"><i class="icon-eye-open"></i></a>
+                                </div>
+                            </div>
+                            <h5></h5>
+                        </div>
+                    </li><!--/.portfolio-item-->
+                    <li class="portfolio-item  guvenlik">
+                        <div class="item-inner">
+                            <div class="portfolio-image">
+                                <img src="images/4.jpg" alt="">
+                                <div class="overlay">
+                                    <a class="preview btn btn-danger" href="images/4.jpg"><i class="icon-eye-open"></i></a>
+                                </div>
+                            </div>
+                            <h5></h5>
+                        </div>
+                    </li><!--/.portfolio-item-->
+                    <li class="portfolio-item guvenlik hack">
+                        <div class="item-inner">
+                            <div class="portfolio-image">
+                                <img src="images/5.jpg" alt="">
+                                <div class="overlay">
+                                    <a class="preview btn btn-danger" href="images/5.jpg"><i class="icon-eye-open"></i></a>
+                                </div>
+                            </div>
+                            <h5></h5>
+                        </div>
+                    </li><!--/.portfolio-item-->
+                    <li class="portfolio-item wordpress hack">
+                        <div class="item-inner">
+                            <div class="portfolio-image">
+                                <img src="images/6.jpg" alt="">
+                                <div class="overlay">
+                                    <a class="preview btn btn-danger" href="images/6.jpg"><i class="icon-eye-open"></i></a>
+                                </div>
+                            </div>
+                            <h5></h5>
+                        </div>
+                    </li><!--/.portfolio-item-->
+                    <li class="portfolio-item guvenlik hack">
+                        <div class="item-inner">
+                            <div class="portfolio-image">
+                                <img src="images/7.png" alt="">
+                                <div class="overlay">
+                                    <a class="preview btn btn-danger" href="images/7.png"><i class="icon-eye-open"></i></a>
+                                </div>
+                            </div>
+                            <h5></h5>
+                        </div>
+                    </li><!--/.portfolio-item-->
+                    <li class="portfolio-item guvenlik hack">
+                        <div class="item-inner">
+                            <div class="portfolio-image">
+                                <img src="images/8.jpg" alt="">
+                                <div class="overlay">
+                                    <a class="preview btn btn-danger" href="images/8.jpg"><i class="icon-eye-open"></i></a>
+                                </div>
+                            </div>
+                            <h5></h5>
+                        </div>
+                    </li><!--/.portfolio-item-->
+                </ul>
+            </div><!--/.box-->
+        </div><!--/.container-->
+    </section><!--/#portfolio-->
+
+    <section id="isMeZombie">
+        <div class="container">
+            <div class="box" style="height:500px;">
+                <div class="center">
+                    <h2>Zombi Miyim?</h2>
+                    <p class="lead">Bilgisayarınız bir hacker tarafında DDOS atakları için esir mi alındı?<br>Öğrenmek için yazılımı indirip kodu girin.</p>
+
+                    <i style="font-size:100px;" class="glyphicon glyphicon-cloud-download"></i>
+                    <br />
+                    <br />
+                    <br />
+                    @if (ViewBag.Logined == null)
+                    {
+                      <button class="btn btn-primary btn-lg" onclick="$('#loginModal').modal('toggle'); $('#loginModal a:first').tab('show'); ">Giriş Yapınız...</button>
+
+                    }
+                    else
+                    {
+                        <button class="btn btn-primary btn-lg" onclick="linkCodeMessage()">Eşleşme Kodu Ver</button>
+                    }
+                  
+                    <!--Bootstrap EslesmeKodModal-->
+                    <div class="modal fade" id="kodModal" tabindex="-1" role="dialog" aria-labelledby="kodModalLabel">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                    <h4 class="modal-title" id="contactModalLabel">New message</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <h4 id="linkKodMessage"></h4>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--EslesmeKodModal Bitti...
+
+                    </div><!--/.col-sm-4-->
+
+                </div>
+            </div>
+    </section><!--/#pricing-->
+
+    <section id="about-us">
+        <div class="container">
+            <div class="box">
+                <div class="center">
+                    <h2>Hakkımızda</h2>
+                    <p class="lead">
+                        Zombi miyim? projesi Hasan Ferdi Turgutlu Teknoloji Fakültesi Yazılım Mühendisliği öğrencileri Emre Berk AKIRMAK, Hasan AKYOL ve Zafer UZUN tarafında Yar.Doc. Dr. Deniz KILINÇ danışmanlığında gerçekleştirilmiştir. <br />
+                        Proje ile TÜBİTAK Lisan Öğrencileri Yazılım Projeleri yarışmasına katılmıştır.
+                    </p>
+                </div>
+                <div class="gap"></div>
+                <div id="team-scroller" class="carousel scale">
+                    <div class="carousel-inner">
+                        <div class="item active">
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <div class="member">
+                                        <p><img class="img-responsive img-thumbnail img-circle" style="border-radius:0px;" src="~/images/Logocbu.jpg" alt=""></p>
+                                        <h3>Celal Bayar<small class="designation">Üniversitesi</small></h3>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="member">
+                                        <p><img class="img-responsive img-thumbnail img-circle" style="border-radius:0px;" src="images/tubitak_logo.jpg" alt=""></p>
+                                        <h3>TÜBİTAK<small class="designation">Lisans Yazılım Projeleri</small></h3>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="member">
+                                        <p><img class="img-responsive img-thumbnail img-circle" src="images/zombie.png" style="border-radius:0px;" alt=""></p>
+                                        <h3>Zombi Miyim?<small class="designation">DDOS Savunması</small></h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <div class="member">
+                                        <p><img class="img-responsive img-thumbnail img-circle" src="images/zombie.png" alt="" style="border-radius:0px;"></p>
+                                        <h3>Zombi Miyim?<small class="designation">DDOS Savunması</small></h3>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="member">
+                                        <p><img class="img-responsive img-thumbnail img-circle" src="images/Logocbu.jpg" style="border-radius:0px;" alt=""></p>
+                                        <h3>Celal Bayar<small class="designation">Üniversitesi</small></h3>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="member">
+                                        <p><img class="img-responsive img-thumbnail img-circle" src="images/tubitak_logo.jpg" style="border-radius:0px;" alt=""></p>
+                                        <h3>TÜBİTAK<small class="designation">Lisans Yazılım Projeleri</small></h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <a class="left-arrow" href="#team-scroller" data-slide="prev">
+                        <i class="icon-angle-left icon-4x"></i>
+                    </a>
+                    <a class="right-arrow" href="#team-scroller" data-slide="next">
+                        <i class="icon-angle-right icon-4x"></i>
+                    </a>
+                </div><!--/.carousel-->
+            </div><!--/.box-->
+        </div><!--/.container-->
+    </section><!--/#about-us-->
+    @Html.Partial("~/Views/Shared/_Contact.cshtml")
+
+    <footer id="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6">
+                    &copy; 2015 <a target="_blank" href="http://zombimiyim.tohumyazilim.com/">Zombi Miyim?</a>. Tüm Hakları Saklıdır.
+                </div>
+
+            </div>
+        </div>
+    </footer><!--/#footer-->
+
+    
+
+
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.isotope.min.js"></script>
+    <script src="js/jquery.prettyPhoto.js"></script>
+    <script src="js/main.js"></script>
+    <script src="~/js/Script.js"></script>
+</body>
+</html>
